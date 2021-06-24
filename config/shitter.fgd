@@ -1,0 +1,61 @@
+// 
+// DeathmatchGame : Sandbox.Game 
+// 
+@PointClass = shitter : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+]
+
+// 
+// Crossbow : BaseDmWeapon 
+// 
+@PointClass  editormodel( "weapons/rust_crossbow/rust_crossbow.vmdl" ) 
+metadata
+{
+}
+= dm_crossbow : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+]
+
+// 
+// ShitterPistol : BaseDmWeapon 
+// 
+@PointClass  editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
+metadata
+{
+}
+= dm_pistol : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+]
+
+// 
+// Shotgun : BaseDmWeapon 
+// 
+@PointClass  editormodel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" ) 
+metadata
+{
+}
+= dm_shotgun : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+]
+
+// 
+// SMG : BaseDmWeapon 
+// 
+@PointClass  editormodel( "weapons/rust_smg/rust_smg.vmdl" ) 
+metadata
+{
+}
+= dm_smg : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+]
+
