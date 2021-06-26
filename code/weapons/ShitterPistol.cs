@@ -30,8 +30,7 @@ partial class ShitterPistol : BaseDmWeapon
 
 	public override void AttackPrimary()
 	{
-		TimeSincePrimaryAttack = 0;
-		TimeSinceSecondaryAttack = 0;
+		TimeSincePrimaryAttack = -0.5f;
 
 		if ( !TakeAmmo( 1 ) )
 		{
@@ -51,11 +50,28 @@ partial class ShitterPistol : BaseDmWeapon
 		//
 		//ShootBullet( 0.05f, 1.5f, 9.0f, 3.0f );
 		if (IsClient) return;
-		ShootBox();
+		ShootShit();
 
 	}
+
+	public override void AttackSecondary()
+    {
+		TimeSinceSecondaryAttack = -5f;
+
+		if (!TakeAmmo (5))
+        {
+			DryFire();
+			return;
+        }
+
+		ShootEffects();
+		PlaySound ( "shoot_big");
+
+		if (IsClient) return;
+		ShootShitBig();
+    }
 	
-	void ShootBox()
+	void ShootShit()
 	{
 		var ent = new Prop
 		{
@@ -63,7 +79,20 @@ partial class ShitterPistol : BaseDmWeapon
 			Rotation = Owner.EyeRot
 		};
 
-		ent.SetModel("models/poopemoji.vmdl");
+		ent.SetModel("models/poopemoji/poopemoji.vmdl");
+		ent.Velocity = Owner.EyeRot.Forward * 10000;
+	}
+
+		void ShootShitBig()
+	{
+		var ent = new Prop
+		{
+			Position = Owner.EyePos + Owner.EyeRot.Forward * 70,
+			Rotation = Owner.EyeRot
+		};
+
+		ent.SetModel("models/poopemoji/poopemoji.vmdl");
+		ent.Scale = 3;
 		ent.Velocity = Owner.EyeRot.Forward * 10000;
 	}
 }

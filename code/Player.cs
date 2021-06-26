@@ -63,7 +63,7 @@ partial class DeathmatchPlayer : Player
 		EnableDrawing = false;
 
 		_ = Particles.Create( "particles/shitexplode.vpcf", Position + (Vector3.Up * (8)));
-		Sound.FromWorld( "fart", Position );
+		Sound.FromWorld( "splat", Position );
 	}
 
 
