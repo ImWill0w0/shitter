@@ -1,6 +1,5 @@
 ﻿using Sandbox;
 
-
 [Library( "dm_pistol", Title = "Shit" )]
 [Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
 partial class ShitterPistol : BaseDmWeapon
@@ -15,6 +14,10 @@ partial class ShitterPistol : BaseDmWeapon
 
 	public override int Bucket => 1;
 
+	public TimeSince TimeSinceChargeStart;
+	public float ChargeTime => 2.0f; // How long the user needs to press Attack2 before shitting
+	private Particles ChargeParticles;
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -28,6 +31,23 @@ partial class ShitterPistol : BaseDmWeapon
 		return base.CanPrimaryAttack() && Input.Pressed( InputButton.Attack1 );
 	}
 
+	public override bool CanSecondaryAttack()
+	{
+		return Input.Down( InputButton.Attack2 );
+	}
+
+	public void StartCharge()
+	{
+		// Change this to your charge particle. Make its life the same rate as your ChargeTime
+		ChargeParticles = Particles.Create( "particles/shit_buildup.vpcf", this, "muzzle" );
+	}
+
+	public void StopCharge()
+	{
+		ChargeParticles?.Destroy( true );
+		TimeSinceChargeStart = 0;
+	}
+	
 	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = -0.5f;
@@ -37,8 +57,7 @@ partial class ShitterPistol : BaseDmWeapon
 			DryFire();
 			return;
 		}
-
-
+		
 		//
 		// Tell the clients to play the shoot effects
 		//
@@ -56,20 +75,64 @@ partial class ShitterPistol : BaseDmWeapon
 
 	public override void AttackSecondary()
     {
-		TimeSinceSecondaryAttack = -5f;
+	    if ( TimeSinceChargeStart < ChargeTime )
+		    return;
+		
+	    TimeSincePrimaryAttack = 0;
+	    TimeSinceChargeStart = 0;
 
-		if (!TakeAmmo (5))
+	    if ( !TakeAmmo( 1 ) )
+	    {
+		    DryFire();
+		    return;
+	    }
+		
+	    // Do your charge fire stuff here, call ShootEffects, play sounds, etc
+
+		if ( !TakeAmmo (5) )
         {
 			DryFire();
 			return;
         }
 
 		ShootEffects();
-		PlaySound ( "shoot_big");
+		PlaySound ( "shoot_big" );
 
-		if (IsClient) return;
+		if ( IsClient ) return;
 		ShootShitBig();
     }
+
+	public override void Simulate( Client owner )
+	{
+		base.Simulate( owner );
+
+		if ( IsReloading )
+		{
+			// Reset timers so that people don't mess with them while reloading
+			TimeSincePrimaryAttack = 0;
+			TimeSinceSecondaryAttack = 0;
+			TimeSinceChargeStart = 0;
+			return;
+		}
+		
+		// Don't do anything if we don't have the ammo for it or player is dead
+		if ( AvailableAmmo() < 5 || Owner.Health <= 0 || !Owner.IsValid() )
+		{
+			StopCharge();
+			return;
+		}
+		
+		// We just started charging, so spawn particles & stuff
+		if ( Input.Pressed( InputButton.Attack2 ) || TimeSinceChargeStart.Relative.AlmostEqual( 0 ) )
+			StartCharge();
+		
+		if ( !Input.Down( InputButton.Attack2 ) )
+			TimeSinceChargeStart = 0;
+
+		// No longer charging
+		if ( Input.Released( InputButton.Attack2 ) )
+			StopCharge();
+	}
 	
 	void ShootShit()
 	{
@@ -83,7 +146,7 @@ partial class ShitterPistol : BaseDmWeapon
 		ent.Velocity = Owner.EyeRot.Forward * 10000;
 	}
 
-		void ShootShitBig()
+	void ShootShitBig()
 	{
 		var ent = new Prop
 		{
@@ -91,8 +154,8 @@ partial class ShitterPistol : BaseDmWeapon
 			Rotation = Owner.EyeRot
 		};
 
-		ent.SetModel("models/poopemoji/poopemoji.vmdl");
-		ent.Scale = 3;
+		ent.SetModel("models/poopemoji/poopemoji_big.vmdl");
+		//ent.Scale = 3;
 		ent.Velocity = Owner.EyeRot.Forward * 10000;
 	}
 }
