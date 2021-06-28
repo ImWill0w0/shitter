@@ -70,15 +70,11 @@ partial class DeathmatchPlayer
 			shoes.EnableHideInFirstPerson = true;
 		}
 
-		if ( Rand.Int( 0, 3 ) != 1 )
+		if ( Rand.Int( 0, 1 ) != 1 )
 		{
 			var model = Rand.FromArray( new[]
 			{
-				"models/citizen_clothes/hat/hat_hardhat.vmdl",
-				"models/citizen_clothes/hat/hat_woolly.vmdl",
-				"models/citizen_clothes/hat/hat_securityhelmet.vmdl",
-				"models/citizen_clothes/hair/hair_malestyle02.vmdl",
-				"models/citizen_clothes/hair/hair_femalebun.black.vmdl"
+				"models/poopemoji/poopemoji_hat.vmdl"
 			} );
 
 			hat = new ClothingEntity();
