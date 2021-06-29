@@ -99,7 +99,7 @@ partial class ShitterPistol : BaseDmWeapon
 		PlaySound ( "shoot_big" );
 
 		if ( IsClient ) return;
-		ShootShitBig();
+		ShootShit(true);
     }
 
 	public override void Simulate( Client owner )
@@ -134,28 +134,16 @@ partial class ShitterPistol : BaseDmWeapon
 			StopCharge();
 	}
 	
-	void ShootShit()
+	void ShootShit(bool isBig = false)
 	{
-		var ent = new Prop
+		var ent = new Poojectile
 		{
-			Position = Owner.EyePos + Owner.EyeRot.Forward * 40,
-			Rotation = Owner.EyeRot
+			Position = Owner.EyePos + Owner.EyeRot.Forward * (isBig ? 70 : 40),
+			Rotation = Owner.EyeRot,
+			Weapon = this
 		};
 
-		ent.SetModel("models/poopemoji/poopemoji.vmdl");
-		ent.Velocity = Owner.EyeRot.Forward * 10000;
-	}
-
-	void ShootShitBig()
-	{
-		var ent = new Prop
-		{
-			Position = Owner.EyePos + Owner.EyeRot.Forward * 70,
-			Rotation = Owner.EyeRot
-		};
-
-		ent.SetModel("models/poopemoji/poopemoji_big.vmdl");
-		//ent.Scale = 3;
+		ent.SetModel($"models/poopemoji/poopemoji{(isBig ? "_big" : "")}.vmdl");
 		ent.Velocity = Owner.EyeRot.Forward * 10000;
 	}
 }
