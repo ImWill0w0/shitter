@@ -34,7 +34,7 @@ partial class DeathmatchPlayer : Player
 		SupressPickupNotices = true;
 
 		Inventory.Add( new ShitterPistol(), true );
-		//Inventory.Add( new Shotgun() );
+		Inventory.Add( new SMPoo() );
 		//Inventory.Add( new SMG() );
 		//Inventory.Add( new Crossbow() );
 
