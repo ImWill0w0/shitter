@@ -7,9 +7,10 @@ partial class SMPoo : BaseDmWeapon
 { 
 	public override string ViewModelPath => "weapons/rust_smg/v_rust_smg.vmdl";
 
-	public override float PrimaryRate => 15.0f;
+	public override float PrimaryRate => 5.0f;
 	public override float SecondaryRate => 1.0f;
-	public override int ClipSize => 30;
+	public override AmmoType AmmoType => AmmoType.Shit;
+	public override int ClipSize => 100;
 	public override float ReloadTime => 4.0f;
 	public override int Bucket => 2;
 
