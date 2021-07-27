@@ -5,6 +5,12 @@ class Poojectile : Prop
 {
 	public Entity Weapon { get; set; }	
 
+	public override void ClientSpawn()
+	{
+		base.ClientSpawn();
+		PlaySound( "projectile" );
+	}
+
 	protected override void OnPhysicsCollision(CollisionEventData eventData)
 	{
 		var propData = GetModelPropData();

@@ -390,3 +390,11 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 code/shitter.csproj
+*.vmap
+*.vtex
+*.zip
+*.vmat
+*.fbx
+*.vmdl
+*.vpcf
+*.mp3

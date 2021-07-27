@@ -35,6 +35,7 @@ partial class DeathmatchPlayer : Player
 
 		Inventory.Add( new ShitterPistol(), true );
 		Inventory.Add( new SMPoo() );
+		Inventory.Add( new CoomLauncher() );
 		//Inventory.Add( new SMG() );
 		//Inventory.Add( new Crossbow() );
 

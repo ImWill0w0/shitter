@@ -63,5 +63,7 @@ public enum AmmoType
 	Pistol,
 	Buckshot,
 	Shit,
+	Cum,
+	Piss,
 	Crossbow
 }
