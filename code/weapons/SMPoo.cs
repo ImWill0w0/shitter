@@ -10,7 +10,7 @@ partial class SMPoo : BaseDmWeapon
 	public override float PrimaryRate => 5.0f;
 	public override float SecondaryRate => 1.0f;
 	public override AmmoType AmmoType => AmmoType.Shit;
-	public override int ClipSize => 100;
+	public override int ClipSize => -1;
 	public override float ReloadTime => 4.0f;
 	public override int Bucket => 2;
 

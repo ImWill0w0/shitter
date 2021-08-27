@@ -31,17 +31,20 @@ public partial class DeathmatchHud : HudEntity<RootPanel>
 		RootPanel.AddChild<VoiceList>();
 		
 		RootPanel.AddChild<ChargeIndicator>();
+		RootPanel.AddChild<DeathScreen>();
 	}
 
 	[ClientRpc]
 	public void OnPlayerDied( string victim, string attacker = null )
 	{
 		Host.AssertClient();
+
 	}
 
 	[ClientRpc]
 	public void ShowDeathScreen( string attackerName )
 	{
 		Host.AssertClient();
+
 	}
 }

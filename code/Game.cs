@@ -19,6 +19,7 @@ partial class DeathmatchGame : Game
 		if ( IsServer )
 		{
 			new DeathmatchHud();
+			//ConsoleSystem.Run("sv_gravity 100");
 		}
 
 		

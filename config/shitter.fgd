@@ -1,61 +1,82 @@
 // 
 // DeathmatchGame : Sandbox.Game 
 // 
-@PointClass = shitter : ""
+@PointClass = shitter : "This is the heart of the gamemode. It's responsible for creating the player and stuff."
 [
 	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
 	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+]
+
+// 
+// CoomLauncher : BaseDmWeapon 
+// 
+@PointClass editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = Coom : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
 ]
 
 // 
 // Crossbow : BaseDmWeapon 
 // 
-@PointClass  editormodel( "weapons/rust_crossbow/rust_crossbow.vmdl" ) 
-metadata
-{
-}
-= dm_crossbow : ""
+@PointClass editormodel( "weapons/rust_crossbow/rust_crossbow.vmdl" ) = dm_crossbow : ""
 [
 	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
 	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
 ]
 
 // 
-// ShitterPistol : BaseDmWeapon 
+// shitthrower : BaseDmWeapon 
 // 
-@PointClass  editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
-metadata
-{
-}
-= dm_pistol : ""
+@PointClass editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = shitthrower : ""
 [
 	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
 	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
 ]
 
 // 
 // Shotgun : BaseDmWeapon 
 // 
-@PointClass  editormodel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" ) 
-metadata
-{
-}
-= dm_shotgun : ""
+@PointClass editormodel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" ) = dm_shotgun : ""
 [
 	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
 	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
 ]
 
 // 
 // SMG : BaseDmWeapon 
 // 
-@PointClass  editormodel( "weapons/rust_smg/rust_smg.vmdl" ) 
-metadata
-{
-}
-= dm_smg : ""
+@PointClass editormodel( "weapons/rust_smg/rust_smg.vmdl" ) = dm_smg : ""
 [
 	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
 	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+// 
+// SMPoo : BaseDmWeapon 
+// 
+@PointClass editormodel( "weapons/rust_smg/rust_smg.vmdl" ) = dm_smg : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	enable_shadows(boolean) [ group="Render Properties" ] : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
 ]
 

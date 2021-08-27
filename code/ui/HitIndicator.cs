@@ -22,6 +22,7 @@ public partial class HitIndicator : Panel
 	public void OnHit( Vector3 pos, float amount )
 	{
 		new HitPoint( amount, pos, this );
+
 	}
 
 	public class HitPoint : Panel

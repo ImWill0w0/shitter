@@ -398,3 +398,6 @@ code/shitter.csproj
 *.vmdl
 *.vpcf
 *.mp3
+*.wav
+*.sound
+*.blend

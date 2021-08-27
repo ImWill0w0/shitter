@@ -40,7 +40,7 @@ public class ChargeIndicator : Panel
 			return;
 		}
 		
-		if ( Local.Pawn.ActiveChild is ShitterPistol pistol )
+		if ( Local.Pawn.ActiveChild is shitthrower pistol )
 		{
 			Value = (pistol.ChargeTime / pistol.TimeSinceChargeStart);
 			if ( pistol.TimeSinceChargeStart.Relative.AlmostEqual( 0, 0.1f ) )

@@ -17,26 +17,35 @@ rootpanel
 	}
 }
 
-vitals
-{
-	position: absolute;
+vitals {
+	position:absolute;
 	bottom: 64px;
+	padding-top:60px;
 	left: 100px;
-	font-size: 64px;
-	color: #ff0;
-	mix-blend-mode: lighten;
+	height: 150px;
+	text-align: center;
+	width: 150px;
+	font-size: 45px;
+	color: white;
+	mix-blend-mode: overlay;
 	font-family: Roboto;
+	background-size:cover;
+	background-image: url( /ui/health.png ) no-repeat center center fixed;
 
-	label
-	{
-		text-shadow: 0px 0px 20px #f70a;
+	label {
+		//text-shadow: 0px 0px 20px #f70a;
+		width: 100%;
+		text-align: center;
 
-		&.danger
-		{
+		&.danger {
 			color: #f00;
-			text-shadow: 0px 0px 10px #f005;
+			//text-shadow: 0px 0px 10px #f005;
 		}
 	}
+}
+
+deathscreen {
+	background-color: black;
 }
 
 

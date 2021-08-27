@@ -70,15 +70,10 @@ partial class DeathmatchPlayer
 			shoes.EnableHideInFirstPerson = true;
 		}
 
-		if ( Rand.Int( 0, 1 ) != 1 )
+		if ( dressed ) ;
 		{
-			var model = Rand.FromArray( new[]
-			{
-				"models/poopemoji/poopemoji_hat.vmdl"
-			} );
-
 			hat = new ClothingEntity();
-			hat.SetModel( model );
+			hat.SetModel( "models/poopemoji/poopemoji_hat.vmdl" );
 			hat.SetParent( this, true );
 			hat.EnableShadowInFirstPerson = true;
 			hat.EnableHideInFirstPerson = true;
